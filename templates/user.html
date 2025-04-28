@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Paneli</title>
+    <style>
+        /* CSS Start */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+        /* CSS End */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kullanıcı Paneli</h1>
+
+        {% if is_admin %}
+            <p><strong>Kullanıcı Adı:</strong> {{ username }}</p>
+            <p><strong>Son Giriş Zamanı:</strong> {{ last_login_time }}</p>
+        {% else %}
+            <p>Hoş geldiniz, {{ username }}!</p>
+        {% endif %}
+        
+        <a href="{{ url_for('logout') }}" class="btn">Çıkış Yap</a>
+    </div>
+</body>
+</html>
